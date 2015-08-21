@@ -33,20 +33,28 @@ public class PersonInfo {
     /** 正在读的书列表 */
     private List<String> readingBook;
     
+    /** 想要读的书 */
     private List<String> wantBook;
     
+    /** 看过的电影 */
     private List<String> watchedMovie;
     
+    /** 想看的电影 */
     private List<String> wantMovie;
     
+    /** 正在听的歌 */
     private List<String> listeningMusic;
     
+    /** 想要听的歌 */
     private List<String> wantMusic;
     
+    /** 经常去的小组 */
     private List<String> oftenGroup;
     
+    /** 关注的人数 */
     private String fellowPeopleNum;
     
+    /** 关注它的人数 */
     private String fellowedPeopleNum;
 
     /**
