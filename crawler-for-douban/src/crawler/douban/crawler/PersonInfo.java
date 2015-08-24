@@ -27,7 +27,7 @@ public class PersonInfo {
     /** 年龄 */
     private String age;
     
-    /** 假如豆瓣时间 */
+    /** 加入豆瓣时间 */
     private String joinDate;
     
     /** 正在读的书列表 */
