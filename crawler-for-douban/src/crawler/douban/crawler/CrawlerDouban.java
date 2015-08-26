@@ -52,7 +52,7 @@ public class CrawlerDouban {
      * 获取页面的内容，存放到Document里。
      * @return
      */
-    public Document getHtml() {
+    private Document getHtml() {
         Document doc = null;
         if (this.url == null) {
             return null;
@@ -71,8 +71,12 @@ public class CrawlerDouban {
      * @param doc
      * @return
      */
-    public PersonInfo convertDoc2PersonInfo(Document doc) {
+    private PersonInfo convertDoc2PersonInfo(Document doc) {
         PersonInfo info = new PersonInfo();
+        if (doc == null) {
+            return null;
+        }
+
         return info;
     }
 
