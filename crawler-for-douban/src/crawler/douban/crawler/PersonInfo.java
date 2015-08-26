@@ -1,5 +1,5 @@
 /**
- * Alipay.com Inc.
+ * Alps and AskingWindy Inc.
  * Copyright (c) 2004-2015 All Rights Reserved.
  */
 package crawler.douban.crawler;
