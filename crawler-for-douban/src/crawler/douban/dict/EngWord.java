@@ -1,7 +1,3 @@
-/**
- * Alipay.com Inc.
- * Copyright (c) 2004-2015 All Rights Reserved.
- */
 package crawler.douban.dict;
 
 import java.util.Arrays;
@@ -19,10 +15,10 @@ public class EngWord {
     public EngWord(){
         int i = 0;
         for(; i < 26; i++){
-            aplha[i] = ""+('A'+i);
+            aplha[i] = Character.toString ((char) ('A'+i));
         }
         for(;i < 52;i++){
-            aplha[i] = ""+('a'-26+i);
+            aplha[i] = Character.toString((char)('a'-26+i));
         }
     }
     
