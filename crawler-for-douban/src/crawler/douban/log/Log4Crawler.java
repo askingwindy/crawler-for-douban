@@ -65,12 +65,36 @@ public class Log4Crawler {
     }
 
     /**
-     * log function for log to database
+     * information log function for log to database
      * @param logContent
      */
-    public void log(String logContent) {
+    public void infoLog(String logContent) {
         this.date = new Date();
         System.out.println(logContent + "-" + date);
+    }
+
+    /**
+     * this log is for debug
+     * @param logContent
+     */
+    public void debugLog(String logContent) {
+
+    }
+
+    /**
+     * this is a log when warn action
+     * @param logContent
+     */
+    public void warnLog(String logContent) {
+
+    }
+
+    /**
+     * this log is for error happen
+     * @param logContent
+     */
+    public void errorLog(String logContent) {
+
     }
 
 }

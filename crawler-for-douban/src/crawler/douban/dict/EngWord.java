@@ -17,9 +17,6 @@ public class EngWord {
         for(; i < 26; i++){
             aplha[i] = Character.toString ((char) ('A'+i));
         }
-        for(;i < 52;i++){
-            aplha[i] = Character.toString((char)('a'-26+i));
-        }
     }
     
     /**
