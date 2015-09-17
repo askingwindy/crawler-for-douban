@@ -58,11 +58,22 @@ public class CrawlerDouban {
      * @param dict
      * @return
      */
-    public PersonInfo crawler() {
+    public boolean crawler() {
         //获得页面的Html代码
         Document pageDoc = this.getHtml();
 
-        return convertDoc2PersonInfo(pageDoc);
+        PersonInfo info = convertDoc2PersonInfo(pageDoc);
+
+        if (info == null) {
+            return false;
+        } else {
+            insertPersonInfo(info);
+            return true;
+        }
+    }
+
+    private boolean insertPersonInfo(PersonInfo info) {
+        return true;
     }
 
     /**
@@ -186,6 +197,11 @@ public class CrawlerDouban {
         return info;
     }
 
+    /**
+     * get the person often look group
+     * @param doc
+     * @return
+     */
     private List<String> getOftenGroup(Document doc) {
         Elements oftenGroupHtml = doc.select("dl[class=\"ob\"] dd a");
         if (oftenGroupHtml != null) {
@@ -199,6 +215,11 @@ public class CrawlerDouban {
         }
     }
 
+    /**
+     * get reading book list
+     * @param obssinHtml
+     * @return
+     */
     private List<String> getReadingBook(Elements obssinHtml) {
         if (obssinHtml == null) {
             return null;
@@ -225,6 +246,11 @@ public class CrawlerDouban {
         return null;
     }
 
+    /**
+     * get the want to read book list
+     * @param obssinHtml
+     * @return
+     */
     private List<String> getWantBook(Elements obssinHtml) {
         if (obssinHtml == null) {
             return null;
@@ -247,6 +273,11 @@ public class CrawlerDouban {
         return null;
     }
 
+    /**
+     * get want to see movie
+     * @param obssinHtml
+     * @return
+     */
     private List<String> getWantMovie(Elements obssinHtml) {
         if (obssinHtml == null) {
             return null;
@@ -269,6 +300,11 @@ public class CrawlerDouban {
         return null;
     }
 
+    /**
+     * get the movie which watched
+     * @param obssinHtml
+     * @return
+     */
     private List<String> getWatchedMovie(Elements obssinHtml) {
         if (obssinHtml == null) {
             return null;
@@ -292,6 +328,11 @@ public class CrawlerDouban {
         return null;
     }
 
+    /**
+     * get the listening music list
+     * @param obssinHtml
+     * @return
+     */
     private List<String> getListeningMusic(Elements obssinHtml) {
         if (obssinHtml == null) {
             return null;
@@ -315,6 +356,11 @@ public class CrawlerDouban {
         return null;
     }
 
+    /**
+     * get want to listen music list
+     * @param obssinHtml
+     * @return
+     */
     private List<String> getWantMusic(Elements obssinHtml) {
         if (obssinHtml == null) {
             return null;
