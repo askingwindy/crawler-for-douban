@@ -4,7 +4,10 @@
  */
 package crawler.douban.test;
 
-import crawler.douban.crawler.CrawlerDouban;
+import java.sql.SQLException;
+
+import crawler.douban.biz.PersonInfoManager;
+
 
 /**
  * @author alps
@@ -14,10 +17,18 @@ public class TestCrawler {
 
     /**
      * @param args
+     * @throws SQLException 
+     * @throws ClassNotFoundException 
+     * @throws IllegalAccessException 
+     * @throws InstantiationException 
      */
-    public static void main(String[] args) {
-        CrawlerDouban cr = new CrawlerDouban("Tina");
-        cr.crawler();
+    public static void main(String[] args) throws InstantiationException, IllegalAccessException,
+                                          ClassNotFoundException, SQLException {
+        //        CrawlerDouban cr = new CrawlerDouban("Tina");
+        //        cr.crawler();
+
+        PersonInfoManager infoManager = new PersonInfoManager();
+        boolean result = infoManager.managePersonInfo();
     }
 
 }

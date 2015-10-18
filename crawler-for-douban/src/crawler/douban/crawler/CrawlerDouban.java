@@ -5,6 +5,7 @@
 package crawler.douban.crawler;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class CrawlerDouban {
     /**
      * log class
      */
-    private Log4Crawler logger;
+    private final Log4Crawler logger;
 
     /**
      * construct
@@ -50,6 +51,16 @@ public class CrawlerDouban {
         super();
         this.id = id;
         this.url = GlobalVariable.PREURL + id;
+        logger = new Log4Crawler();
+    }
+
+    /**
+     * construct the url
+     * @param id
+     */
+    public void constructUrl(String id) {
+        this.id = id;
+        this.url = GlobalVariable.PREURL + id;
     }
 
 
@@ -57,24 +68,30 @@ public class CrawlerDouban {
      * 对页面内容进行爬取
      * @param dict
      * @return
+     * @throws SQLException 
+     * @throws ClassNotFoundException 
+     * @throws IllegalAccessException 
+     * @throws InstantiationException 
      */
-    public boolean crawler() {
+    public PersonInfo crawler() throws InstantiationException, IllegalAccessException,
+                            ClassNotFoundException, SQLException {
+        if (this.url == null) {
+            logger.warnLog("empty url");
+            return null;
+        }
         //获得页面的Html代码
         Document pageDoc = this.getHtml();
-
+        //这里要加上用户不存在的页面判断
         PersonInfo info = convertDoc2PersonInfo(pageDoc);
 
         if (info == null) {
-            return false;
+            return null;
         } else {
-            insertPersonInfo(info);
-            return true;
+            return info;
         }
     }
 
-    private boolean insertPersonInfo(PersonInfo info) {
-        return true;
-    }
+
 
     /**
      * 获取页面的内容，存放到Document里。
@@ -423,21 +440,14 @@ public class CrawlerDouban {
      * @return
      */
     private String getFellowedPeopleNum(Document doc) {
-        Elements friendHtml = doc.select("div[id=\"friend\"]");
-        Elements fellowedPeopleNumHtml = null;
+        Elements friendHtml = doc.select("p[class=\"rev-link\"]");
         if (friendHtml != null) {
-            fellowedPeopleNumHtml = friendHtml.select("p[class=\"rev-link\"]");
-            //被关注人数
-            if (fellowedPeopleNumHtml != null) {
-                String fellowedPeopleNum = UtilsMethod.findFirstStringByRegex("被[0-9]+人关注",
-                    fellowedPeopleNumHtml.text());
+            String fellowedPeopleNum = UtilsMethod.findFirstStringByRegex("被[0-9]+人关注",
+                friendHtml.text());
+            if (fellowedPeopleNum != null) {
+                fellowedPeopleNum = fellowedPeopleNum.replaceAll("[\\D]+", "");
                 if (fellowedPeopleNum != null) {
-                    fellowedPeopleNum = fellowedPeopleNum.replaceAll("[\\D]+", "");
-                    if (fellowedPeopleNum != null) {
-                        return fellowedPeopleNum;
-                    } else {
-                        return null;
-                    }
+                    return fellowedPeopleNum;
                 } else {
                     return null;
                 }

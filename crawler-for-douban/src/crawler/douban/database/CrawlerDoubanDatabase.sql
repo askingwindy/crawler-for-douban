@@ -24,10 +24,10 @@ DROP TABLE IF EXISTS `listening_music`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `listening_music` (
   `listening_music` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(20) NOT NULL,
+  `user_id` varchar(20) NOT NULL,
   `music_name` varchar(100) NOT NULL,
   PRIMARY KEY (`listening_music`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,10 +48,10 @@ DROP TABLE IF EXISTS `often_group`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `often_group` (
   `often_group_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(20) NOT NULL,
+  `user_id` varchar(20) NOT NULL,
   `group_name` varchar(100) NOT NULL,
   PRIMARY KEY (`often_group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,10 +72,10 @@ DROP TABLE IF EXISTS `reading_book`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `reading_book` (
   `reading_book_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(20) NOT NULL,
+  `user_id` varchar(20) NOT NULL,
   `book_name` varchar(100) NOT NULL,
   PRIMARY KEY (`reading_book_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +95,7 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `user_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(20) NOT NULL,
   `user_name` varchar(20) NOT NULL,
   `user_home_page_url` varchar(255) NOT NULL,
   `user_sex` varchar(10) DEFAULT NULL,
@@ -104,7 +104,7 @@ CREATE TABLE `user` (
   `fellow_people_num` int(11) DEFAULT NULL,
   `fellowed_people_num` int(11) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,10 +125,10 @@ DROP TABLE IF EXISTS `want_book`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `want_book` (
   `want_book_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(20) NOT NULL,
+  `user_id` varchar(20) NOT NULL,
   `book_name` varchar(100) NOT NULL,
   PRIMARY KEY (`want_book_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,10 +149,10 @@ DROP TABLE IF EXISTS `want_movie`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `want_movie` (
   `want_movie_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(20) NOT NULL,
+  `user_id` varchar(20) NOT NULL,
   `movie_name` varchar(100) NOT NULL,
   PRIMARY KEY (`want_movie_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,10 +173,10 @@ DROP TABLE IF EXISTS `want_music`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `want_music` (
   `want_music` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(20) NOT NULL,
+  `user_id` varchar(20) NOT NULL,
   `music_name` varchar(100) NOT NULL,
   PRIMARY KEY (`want_music`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -197,10 +197,10 @@ DROP TABLE IF EXISTS `watched_movie`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `watched_movie` (
   `watchid_movie_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(20) NOT NULL,
+  `user_id` varchar(20) NOT NULL,
   `movie_name` varchar(100) NOT NULL,
   PRIMARY KEY (`watchid_movie_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
