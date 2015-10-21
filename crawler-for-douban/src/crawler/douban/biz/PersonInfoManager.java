@@ -29,10 +29,10 @@ public class PersonInfoManager {
     /**
      * constructor
      */
-    public PersonInfoManager() {
+    public PersonInfoManager(String userId) {
         super();
         logger = new Log4Crawler();
-        crawlerDouban = new CrawlerDouban("Tina");
+        crawlerDouban = new CrawlerDouban(userId);
     }
 
     public boolean managePersonInfo() throws InstantiationException, IllegalAccessException,

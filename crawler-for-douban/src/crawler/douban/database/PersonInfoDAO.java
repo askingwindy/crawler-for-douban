@@ -57,28 +57,28 @@ public class PersonInfoDAO {
     }
 
     public boolean insertPersonInfo(PersonInfo personInfo) {
+        //convert the person information to data object
+        PersonInfoUserDO userDO = PersonInfo2DO.convertToPersonInfoUserDO(personInfo);
+        List<PersonInfoUserListeningMusicDO> listeningMusicDO = PersonInfo2DO
+            .convertToPersonInfoUserListeningMusicDO(personInfo);
+        List<PersonInfoUserWantMusicDO> wantMusicDO = PersonInfo2DO
+            .convertToPersonInfoUserWantMusicDO(personInfo);
+        List<PersonInfoUserReadingBookDO> readingBookDO = PersonInfo2DO
+            .convertToPersonInfoReadingBookDO(personInfo);
+        List<PersonInfoUserWantBookDO> wantBookDO = PersonInfo2DO
+            .convertToPersonInfoWantBookDO(personInfo);
+        List<PersonInfoUserWatchedMovieDO> watchedMovieDO = PersonInfo2DO
+            .convertToPersonInfoUserWatchedMovieDO(personInfo);
+        List<PersonInfoUserWantMovieDO> wantMovieDO = PersonInfo2DO
+            .convertToPersonInfoWantMovieDO(personInfo);
+        List<PersonInfoUserOftenGroupDO> oftenGroupDO = PersonInfo2DO
+            .converToPersonInfoUserOftenGroupDO(personInfo);
         try {
-
-            //convert the person information to data object
-            PersonInfoUserDO userDO = PersonInfo2DO.convertToPersonInfoUserDO(personInfo);
-            List<PersonInfoUserListeningMusicDO> listeningMusicDO = PersonInfo2DO
-                .convertToPersonInfoUserListeningMusicDO(personInfo);
-            List<PersonInfoUserWantMusicDO> wantMusicDO = PersonInfo2DO
-                .convertToPersonInfoUserWantMusicDO(personInfo);
-            List<PersonInfoUserReadingBookDO> readingBookDO = PersonInfo2DO
-                .convertToPersonInfoReadingBookDO(personInfo);
-            List<PersonInfoUserWantBookDO> wantBookDO = PersonInfo2DO
-                .convertToPersonInfoWantBookDO(personInfo);
-            List<PersonInfoUserWatchedMovieDO> watchedMovieDO = PersonInfo2DO
-                .convertToPersonInfoUserWatchedMovieDO(personInfo);
-            List<PersonInfoUserWantMovieDO> wantMovieDO = PersonInfo2DO
-                .convertToPersonInfoWantMovieDO(personInfo);
-            List<PersonInfoUserOftenGroupDO> oftenGroupDO = PersonInfo2DO
-                .converToPersonInfoUserOftenGroupDO(personInfo);
             //insert the data object to database
 
             if (!insertUserDO(userDO)) {
                 logger.warnLog("insert user Error!");
+                return false;
             }
             if (!insertListeningMusicDO(listeningMusicDO)) {
                 logger.warnLog("insert listeningMusicDO Error!");
@@ -102,7 +102,7 @@ public class PersonInfoDAO {
                 logger.warnLog("insert oftenGroup Error!");
             }
         } catch (Exception e) {
-            System.out.print("MYSQL ERROR:" + e.getMessage());
+            logger.warnLog("MYSQL ERROR:" + e.getMessage());
             return false;
         }
         return true;
@@ -114,6 +114,9 @@ public class PersonInfoDAO {
      * @return
      */
     private boolean insertUserDO(PersonInfoUserDO userDO) {
+        if (userDO == null) {
+            return false;
+        }
         String sql = "insert into user(user_id,user_name, user_home_page_url, user_sex, user_age, user_join_date, fellow_people_num, fellowed_people_num) values('"
                      + userDO.getUserId()
                      + "','"
@@ -145,6 +148,9 @@ public class PersonInfoDAO {
      * @return
      */
     private boolean insertListeningMusicDO(List<PersonInfoUserListeningMusicDO> listeningMusicDOList) {
+        if (listeningMusicDOList == null) {
+            return true;
+        }
         for (PersonInfoUserListeningMusicDO music : listeningMusicDOList) {
             String sql = "insert into listening_music(user_id, music_name) values('"
                          + music.getUserId() + "','" + music.getListeningMusic() + "')";
@@ -164,6 +170,9 @@ public class PersonInfoDAO {
      * @return
      */
     private boolean insertWantMusicDO(List<PersonInfoUserWantMusicDO> wantMusicDOList) {
+        if (wantMusicDOList == null) {
+            return true;
+        }
         for (PersonInfoUserWantMusicDO wantMusicDO : wantMusicDOList) {
             String sql = "insert into want_music(user_id, music_name) values('"
                          + wantMusicDO.getUserId() + "','" + wantMusicDO.getWantMusic() + "');";
@@ -182,6 +191,9 @@ public class PersonInfoDAO {
      * @return
      */
     private boolean insertReadingBookDO(List<PersonInfoUserReadingBookDO> readingBookDOList) {
+        if (readingBookDOList == null) {
+            return true;
+        }
         for (PersonInfoUserReadingBookDO readingBookDO : readingBookDOList) {
             String sql = "insert into reading_book(user_id, book_name) values('"
                          + readingBookDO.getUserId() + "','" + readingBookDO.getReadingBook()
@@ -201,6 +213,9 @@ public class PersonInfoDAO {
      * @return
      */
     private boolean insertWantBookDO(List<PersonInfoUserWantBookDO> wantBookDOList) {
+        if (wantBookDOList == null) {
+            return true;
+        }
         for (PersonInfoUserWantBookDO wantBookDO : wantBookDOList) {
             String sql = "insert into want_book(user_id, book_name) values('"
                          + wantBookDO.getUserId() + "','" + wantBookDO.getWantBook() + "');";
@@ -219,6 +234,9 @@ public class PersonInfoDAO {
      * @return
      */
     private boolean insertWatchedMovieDO(List<PersonInfoUserWatchedMovieDO> watchedMovieDOList) {
+        if (watchedMovieDOList == null) {
+            return true;
+        }
         for (PersonInfoUserWatchedMovieDO watchedMovieDO : watchedMovieDOList) {
             String sql = "insert into watched_movie(user_id, movie_name) values('"
                          + watchedMovieDO.getUserId() + "','" + watchedMovieDO.getWatchedMovie()
@@ -238,6 +256,9 @@ public class PersonInfoDAO {
      * @return
      */
     private boolean insertWantMovieDO(List<PersonInfoUserWantMovieDO> wantMovieDOList) {
+        if (wantMovieDOList == null) {
+            return true;
+        }
         for (PersonInfoUserWantMovieDO wantMovieDO : wantMovieDOList) {
             String sql = "insert into want_movie(user_id, movie_name) values('"
                          + wantMovieDO.getUserId() + "','" + wantMovieDO.getWantMovie() + "')";
@@ -256,6 +277,9 @@ public class PersonInfoDAO {
      * @return
      */
     private boolean insertOftenGroupDO(List<PersonInfoUserOftenGroupDO> oftenGroupDOList) {
+        if (oftenGroupDOList == null) {
+            return true;
+        }
         for (PersonInfoUserOftenGroupDO oftenGroupDO : oftenGroupDOList) {
             String sql = "insert into often_group(user_id, group_name) values('"
                          + oftenGroupDO.getUserId() + "', '" + oftenGroupDO.getOftenGroup() + "')";

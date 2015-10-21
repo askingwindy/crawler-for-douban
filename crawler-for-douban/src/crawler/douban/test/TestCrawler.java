@@ -27,7 +27,7 @@ public class TestCrawler {
         //        CrawlerDouban cr = new CrawlerDouban("Tina");
         //        cr.crawler();
 
-        PersonInfoManager infoManager = new PersonInfoManager();
+        PersonInfoManager infoManager = new PersonInfoManager("alps");
         boolean result = infoManager.managePersonInfo();
     }
 

@@ -13,9 +13,9 @@ import crawler.douban.database.dataobject.PersonInfoUserListeningMusicDO;
 import crawler.douban.database.dataobject.PersonInfoUserOftenGroupDO;
 import crawler.douban.database.dataobject.PersonInfoUserReadingBookDO;
 import crawler.douban.database.dataobject.PersonInfoUserWantBookDO;
+import crawler.douban.database.dataobject.PersonInfoUserWantMovieDO;
 import crawler.douban.database.dataobject.PersonInfoUserWantMusicDO;
 import crawler.douban.database.dataobject.PersonInfoUserWatchedMovieDO;
-import crawler.douban.database.dataobject.PersonInfoUserWantMovieDO;
 
 /**
  * @author alps
@@ -51,7 +51,7 @@ public class PersonInfo2DO {
      * @return
      */
     public static List<PersonInfoUserReadingBookDO> convertToPersonInfoReadingBookDO(PersonInfo person) {
-        if (person == null) {
+        if (person.getReadingBook() == null) {
             return null;
         }
         List<PersonInfoUserReadingBookDO> readingBookDOList = new ArrayList<PersonInfoUserReadingBookDO>();
@@ -70,7 +70,7 @@ public class PersonInfo2DO {
      * @return
      */
     public static List<PersonInfoUserWantBookDO> convertToPersonInfoWantBookDO(PersonInfo person) {
-        if (person == null) {
+        if (person.getWantBook() == null) {
             return null;
         }
         List<PersonInfoUserWantBookDO> wantBookDOList = new ArrayList<PersonInfoUserWantBookDO>();
@@ -89,7 +89,7 @@ public class PersonInfo2DO {
      * @return
      */
     public static List<PersonInfoUserListeningMusicDO> convertToPersonInfoUserListeningMusicDO(PersonInfo person) {
-        if (person == null) {
+        if (person.getListeningMusic() == null) {
             return null;
         }
         List<PersonInfoUserListeningMusicDO> listeningMusicDOList = new ArrayList<PersonInfoUserListeningMusicDO>();
@@ -108,7 +108,7 @@ public class PersonInfo2DO {
      * @return
      */
     public static List<PersonInfoUserWantMusicDO> convertToPersonInfoUserWantMusicDO(PersonInfo person) {
-        if (person == null) {
+        if (person.getWantMusic() == null) {
             return null;
         }
         List<PersonInfoUserWantMusicDO> wantMusicDOList = new ArrayList<PersonInfoUserWantMusicDO>();
@@ -127,7 +127,7 @@ public class PersonInfo2DO {
      * @return
      */
     public static List<PersonInfoUserWatchedMovieDO> convertToPersonInfoUserWatchedMovieDO(PersonInfo person) {
-        if (person == null) {
+        if (person.getWatchedMovie() == null) {
             return null;
         }
         List<PersonInfoUserWatchedMovieDO> watchedMovieDOList = new ArrayList<PersonInfoUserWatchedMovieDO>();
@@ -146,7 +146,7 @@ public class PersonInfo2DO {
      * @return
      */
     public static List<PersonInfoUserWantMovieDO> convertToPersonInfoWantMovieDO(PersonInfo person) {
-        if (person == null) {
+        if (person.getWantMovie() == null) {
             return null;
         }
         List<PersonInfoUserWantMovieDO> wantMovieDOList = new ArrayList<PersonInfoUserWantMovieDO>();
@@ -165,7 +165,7 @@ public class PersonInfo2DO {
      * @return
      */
     public static List<PersonInfoUserOftenGroupDO> converToPersonInfoUserOftenGroupDO(PersonInfo person) {
-        if (person == null) {
+        if (person.getOftenGroup() == null) {
             return null;
         }
         List<PersonInfoUserOftenGroupDO> oftenGroupDOList = new ArrayList<PersonInfoUserOftenGroupDO>();

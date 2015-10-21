@@ -82,6 +82,9 @@ public class CrawlerDouban {
         //获得页面的Html代码
         Document pageDoc = this.getHtml();
         //这里要加上用户不存在的页面判断
+        if (pageDoc == null) {
+            return null;
+        }
         PersonInfo info = convertDoc2PersonInfo(pageDoc);
 
         if (info == null) {
@@ -105,9 +108,9 @@ public class CrawlerDouban {
             try {
                 doc = Jsoup.connect(url).data("query", "Java").userAgent("Mozilla").timeout(3000)
                     .get();
-                //                System.out.print(doc.html());
             } catch (IOException e) {
-                System.out.println("error in get html code");
+                //                System.out.println("error in get html code");
+                logger.infoLog(url + " -- not exist!");
             }
         }
         return doc;

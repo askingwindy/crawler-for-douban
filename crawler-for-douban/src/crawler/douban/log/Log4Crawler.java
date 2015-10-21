@@ -78,7 +78,8 @@ public class Log4Crawler {
      * @param logContent
      */
     public void debugLog(String logContent) {
-
+        this.date = new Date();
+        System.out.println(logContent + "-" + date);
     }
 
     /**
@@ -86,7 +87,8 @@ public class Log4Crawler {
      * @param logContent
      */
     public void warnLog(String logContent) {
-
+        this.date = new Date();
+        System.out.println(logContent + "-" + date);
     }
 
     /**
@@ -94,7 +96,8 @@ public class Log4Crawler {
      * @param logContent
      */
     public void errorLog(String logContent) {
-
+        this.date = new Date();
+        System.out.println(logContent + "-" + date);
     }
 
 }
