@@ -1,2 +1,8 @@
 .DS_Store
 
+*.class
+
+/crawler-for-douban/bin
+
+!.gitignore
+
