@@ -7,6 +7,7 @@ package crawler.douban.test;
 import java.sql.SQLException;
 
 import crawler.douban.biz.PersonInfoManager;
+import crawler.douban.user.UserInfo;
 
 
 /**
@@ -26,9 +27,16 @@ public class TestCrawler {
                                           ClassNotFoundException, SQLException {
         //        CrawlerDouban cr = new CrawlerDouban("Tina");
         //        cr.crawler();
-
-        PersonInfoManager infoManager = new PersonInfoManager("alps");
+        UserInfo userInfo = new UserInfo();
+        String nextName = userInfo.getNextName("CHEO");
+        //        System.out.println(nextName);
+        PersonInfoManager infoManager = new PersonInfoManager(nextName);
         boolean result = infoManager.managePersonInfo();
+        if (result) {
+            System.out.println("true");
+        } else {
+            System.out.println("false");
+        }
     }
 
 }
