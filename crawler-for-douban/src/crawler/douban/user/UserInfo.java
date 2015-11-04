@@ -42,7 +42,7 @@ public class UserInfo {
 	 * @return
 	 */
 	public static String getNextName(String name){
-		UserInfo.curName = name;
+		UserInfo.curName = name.toLowerCase();
 		UserInfo.curName = UserGeneratorUtil.findNameAlgorithm(dict, UserInfo.curName);
 		return UserInfo.curName;
 	}

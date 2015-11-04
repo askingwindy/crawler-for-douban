@@ -20,7 +20,7 @@ public class EngWord {
     /**
      * 字典开始的首字母
      */
-    private static final char START_CHAR = 'A';
+    private static final char START_CHAR = 'a';
     
     /**
      * 字典
