@@ -1,3 +1,8 @@
+/**
+ * Alps and AskingWindy Inc.
+ * Copyright (c) 2004-2015 All Rights Reserved.
+ */
+
 package crawler.douban.dict;
 
 import java.io.File;
