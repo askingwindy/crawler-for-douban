@@ -4,7 +4,13 @@
  */
 package crawler.douban.log;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.DateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * @author alps
@@ -20,12 +26,40 @@ public class Log4Crawler {
      * log create time
      */
     Date   date;
+    /**
+     * Connect to mysql
+     */
+    Connection con;
+    /**
+     * statement for mysql
+     */
+    Statement  stmt;
 
+    DateFormat dateFormat; ;
     /**
      * constructer for log
      */
     public Log4Crawler() {
         super();
+        try {
+            // there should do some thing to catch the exception
+            stmt = connectDatabase();
+        } catch (InstantiationException e) {
+        } catch (IllegalAccessException e) {
+        } catch (ClassNotFoundException e) {
+        } catch (SQLException e) {
+        }
+        dateFormat = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM,
+            Locale.CHINA);
+    }
+
+    private Statement connectDatabase() throws InstantiationException, IllegalAccessException,
+                                       ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.jdbc.Driver").newInstance(); //MYSQL驱动
+        con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/tongji", "chen",
+            "chenfushan");
+        stmt = con.createStatement(); //创建声明
+        return stmt;
     }
 
     /**
@@ -70,7 +104,15 @@ public class Log4Crawler {
      */
     public void infoLog(String logContent) {
         this.date = new Date();
-        System.out.println(logContent + "-" + date);
+        int logLevel = 1;
+        String formatDate = dateFormat.format(date);
+        String sql = "insert into crawler_log(log_content, log_date, log_level) values('"
+                     + logContent + "','" + formatDate + "', '" + logLevel + "')";
+        try {
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            System.out.println("insert info log error! log content -" + sql + "-" + date);
+        }
     }
 
     /**
@@ -79,7 +121,15 @@ public class Log4Crawler {
      */
     public void debugLog(String logContent) {
         this.date = new Date();
-        System.out.println(logContent + "-" + date);
+        int logLevel = 2;
+        String formatDate = dateFormat.format(date);
+        String sql = "insert into crawler_log(log_content, log_date, log_level) values('"
+                     + logContent + "','" + formatDate + "', '" + logLevel + "')";
+        try {
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            System.out.println("insert debug log error! log content -" + logContent + "-" + date);
+        }
     }
 
     /**
@@ -88,7 +138,15 @@ public class Log4Crawler {
      */
     public void warnLog(String logContent) {
         this.date = new Date();
-        System.out.println(logContent + "-" + date);
+        int logLevel = 3;
+        String formatDate = dateFormat.format(date);
+        String sql = "insert into crawler_log(log_content, log_date, log_level) values('"
+                     + logContent + "','" + formatDate + "', '" + logLevel + "')";
+        try {
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            System.out.println("insert warn log error! log content -" + logContent + "-" + date);
+        }
     }
 
     /**
@@ -97,7 +155,15 @@ public class Log4Crawler {
      */
     public void errorLog(String logContent) {
         this.date = new Date();
-        System.out.println(logContent + "-" + date);
+        int logLevel = 4;
+        String formatDate = dateFormat.format(date);
+        String sql = "insert into crawler_log(log_content, log_date, log_level) values('"
+                     + logContent + "','" + formatDate + "', '" + logLevel + "')";
+        try {
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            System.out.println("insert error log error! log content -" + logContent + "-" + date);
+        }
     }
 
 }

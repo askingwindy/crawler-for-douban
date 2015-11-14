@@ -16,6 +16,8 @@ import crawler.douban.user.UserInfo;
  */
 public class TestCrawler {
 
+    private static PersonInfoManager infoManager;
+
     /**
      * @param args
      * @throws SQLException 
@@ -25,18 +27,23 @@ public class TestCrawler {
      */
     public static void main(String[] args) throws InstantiationException, IllegalAccessException,
                                           ClassNotFoundException, SQLException {
-        //        CrawlerDouban cr = new CrawlerDouban("Tina");
-        //        cr.crawler();
-        UserInfo userInfo = new UserInfo();
-        String nextName = userInfo.getNextName("CHEO");
-        //        System.out.println(nextName);
-        PersonInfoManager infoManager = new PersonInfoManager(nextName);
+        String nextName = UserInfo.getNextName("a");
+        System.out.println(nextName);
+        infoManager = new PersonInfoManager(nextName);
         boolean result = infoManager.managePersonInfo();
-        if (result) {
+        while (result) {
             System.out.println("true");
-        } else {
-            System.out.println("false");
+            nextName = UserInfo.getNextName();
+            System.out.println(nextName);
+            infoManager = new PersonInfoManager(nextName);
+            result = infoManager.managePersonInfo();
         }
+        //        System.out.println(result);
+        //        Date date = new Date();
+        //        int logLevel = 1;
+        //        String sql = "insert into crawler_log(log_id, log_content, log_date, log_level) values('','"
+        //                     + date + "','" + date + "', '" + logLevel + "')";
+        //        System.out.println(sql);
     }
 
 }
