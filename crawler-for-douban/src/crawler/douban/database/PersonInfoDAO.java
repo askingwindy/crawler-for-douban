@@ -77,29 +77,29 @@ public class PersonInfoDAO {
             //insert the data object to database
 
             if (!insertUserDO(userDO)) {
-                logger.warnLog("insert user Error!");
+                logger.warnLog("insert user:" + userDO.getUserId() + " Error!");
                 return false;
             }
             if (!insertListeningMusicDO(listeningMusicDO)) {
-                logger.warnLog("insert listeningMusicDO Error!");
+                logger.warnLog("insert listeningMusicDO" + userDO.getUserId() + " Error!");
             }
             if (!insertWantMusicDO(wantMusicDO)) {
-                logger.warnLog("insert wantMusicDO Error!");
+                logger.warnLog("insert wantMusicDO" + userDO.getUserId() + " Error!");
             }
             if (!insertReadingBookDO(readingBookDO)) {
-                logger.warnLog("insert readingBookDO Error!");
+                logger.warnLog("insert readingBookDO" + userDO.getUserId() + " Error!");
             }
             if (!insertWantBookDO(wantBookDO)) {
-                logger.warnLog("insert wantBookDo Error!");
+                logger.warnLog("insert wantBookDo" + userDO.getUserId() + " Error!");
             }
             if (!insertWatchedMovieDO(watchedMovieDO)) {
-                logger.warnLog("insert watchedMovieDO Error!");
+                logger.warnLog("insert watchedMovieDO" + userDO.getUserId() + " Error!");
             }
             if (!insertWantMovieDO(wantMovieDO)) {
-                logger.warnLog("insert wantMovieDO Error!");
+                logger.warnLog("insert wantMovieDO" + userDO.getUserId() + " Error!");
             }
             if (!insertOftenGroupDO(oftenGroupDO)) {
-                logger.warnLog("insert oftenGroup Error!");
+                logger.warnLog("insert oftenGroup" + userDO.getUserId() + " Error!");
             }
         } catch (Exception e) {
             logger.warnLog("MYSQL ERROR:" + e.getMessage());
