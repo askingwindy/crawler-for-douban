@@ -138,70 +138,70 @@ public class CrawlerDouban {
         String fellowPeopleNum = getFellowPeopleNum(doc);
         info.setFellowPeopleNum(fellowPeopleNum);
         if (fellowPeopleNum == null) {
-            logger.infoLog("empty fellow people");
+            logger.infoLog("User:" + id + ": empty fellow people");
         }
 
         //被关注的人数
         String fellowedPeopleNum = getFellowedPeopleNum(doc);
         info.setFellowedPeopleNum(fellowedPeopleNum);
         if (fellowedPeopleNum == null) {
-            logger.infoLog("empty fellowed people");
+            logger.infoLog("User:" + id + ": empty fellowed people");
         }
 
         //常去的小组
         List<String> oftenGroup = getOftenGroup(doc);
         info.setOftenGroup(oftenGroup);
         if (oftenGroup == null) {
-            logger.infoLog("empty often group");
+            logger.infoLog("User:" + id + ": empty often group");
         }
 
         //获取在读的书列表
         List<String> readingBook = getReadingBook(obssinHtml);
         info.setReadingBook(readingBook);
         if (readingBook == null) {
-            logger.infoLog("empty reading book");
+            logger.infoLog("User:" + id + ": empty reading book");
         }
 
         //获取想读的书列表
         List<String> wantBook = getWantBook(obssinHtml);
         info.setWantBook(wantBook);
         if (wantBook == null) {
-            logger.infoLog("empty want book");
+            logger.infoLog("User:" + id + ": empty want book");
         }
 
         //想看的电影
         List<String> wantMovie = getWantMovie(obssinHtml);
         info.setWantMovie(wantMovie);
         if (wantMovie == null) {
-            logger.infoLog("empty want movie");
+            logger.infoLog("User:" + id + ": empty want movie");
         }
 
         //看过的电影
         List<String> watchedMovie = getWatchedMovie(obssinHtml);
         info.setWatchedMovie(watchedMovie);
         if (watchedMovie == null) {
-            logger.infoLog("empty watched movie");
+            logger.infoLog("User:" + id + ": empty watched movie");
         }
 
         //在听的歌
         List<String> listeningMusic = getListeningMusic(obssinHtml);
         info.setListeningMusic(listeningMusic);
         if (listeningMusic == null) {
-            logger.infoLog("empty listening music");
+            logger.infoLog("User:" + id + ": empty listening music");
         }
 
         //想听的歌
         List<String> wantMusic = getWantMusic(obssinHtml);
         info.setWantMusic(wantMusic);
         if (wantMusic == null) {
-            logger.infoLog("empty want music");
+            logger.infoLog("User:" + id + ": empty want music");
         }
 
         //加入时间
         String joinDate = getJoinDate(doc);
         info.setJoinDate(joinDate);
         if (joinDate == null) {
-            logger.infoLog("empty join date");
+            logger.infoLog("User:" + id + ": empty join date");
         }
         //性别（暂时无法获取，设置默认值）
         info.setSex("n");
@@ -211,7 +211,7 @@ public class CrawlerDouban {
         String name = getName(doc);
         info.setUserName(name);
         if (name == null) {
-            logger.infoLog("empty name");
+            logger.infoLog("User:" + id + ": empty name");
         }
         
         return info;

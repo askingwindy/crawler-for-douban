@@ -26,11 +26,14 @@ public class PersonInfoManager {
      */
     private final Log4Crawler logger;
 
+    String                    userId;
+
     /**
      * constructor
      */
     public PersonInfoManager(String userId) {
         super();
+        this.userId = userId;
         logger = new Log4Crawler();
         crawlerDouban = new CrawlerDouban(userId);
     }
@@ -39,7 +42,7 @@ public class PersonInfoManager {
                                      ClassNotFoundException, SQLException {
         PersonInfo info = crawlerDouban.crawler();
         if (info == null) {
-            logger.infoLog("empty person information");
+            logger.infoLog("User:" + userId + ": empty person information");
             return true;
         }
         if (insertPersonInfo(info) == true) {

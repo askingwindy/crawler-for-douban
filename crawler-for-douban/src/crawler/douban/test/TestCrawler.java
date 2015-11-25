@@ -7,6 +7,7 @@ package crawler.douban.test;
 import java.sql.SQLException;
 
 import crawler.douban.biz.PersonInfoManager;
+import crawler.douban.user.UserInfo;
 
 
 /**
@@ -14,6 +15,8 @@ import crawler.douban.biz.PersonInfoManager;
  * @version $Id: TestCrawler.java,v 0.1 2015年8月26日 下午2:44:41 alps Exp $
  */
 public class TestCrawler {
+
+    private static PersonInfoManager infoManager;
 
     /**
      * @param args
@@ -24,11 +27,23 @@ public class TestCrawler {
      */
     public static void main(String[] args) throws InstantiationException, IllegalAccessException,
                                           ClassNotFoundException, SQLException {
-        //        CrawlerDouban cr = new CrawlerDouban("Tina");
-        //        cr.crawler();
-
-        PersonInfoManager infoManager = new PersonInfoManager("alps");
+        String nextName = UserInfo.getNextName("a");
+        System.out.println(nextName);
+        infoManager = new PersonInfoManager(nextName);
         boolean result = infoManager.managePersonInfo();
+        while (result) {
+            System.out.println("true");
+            nextName = UserInfo.getNextName();
+            System.out.println(nextName);
+            infoManager = new PersonInfoManager(nextName);
+            result = infoManager.managePersonInfo();
+        }
+        //        System.out.println(result);
+        //        Date date = new Date();
+        //        int logLevel = 1;
+        //        String sql = "insert into crawler_log(log_id, log_content, log_date, log_level) values('','"
+        //                     + date + "','" + date + "', '" + logLevel + "')";
+        //        System.out.println(sql);
     }
 
 }

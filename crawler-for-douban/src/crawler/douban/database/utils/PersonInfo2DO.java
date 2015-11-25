@@ -131,7 +131,7 @@ public class PersonInfo2DO {
             return null;
         }
         List<PersonInfoUserWatchedMovieDO> watchedMovieDOList = new ArrayList<PersonInfoUserWatchedMovieDO>();
-        for (String tempWatchMovie : person.getWantMovie()) {
+        for (String tempWatchMovie : person.getWatchedMovie()) {
             PersonInfoUserWatchedMovieDO watchedMovieDO = new PersonInfoUserWatchedMovieDO();
             watchedMovieDO.setUserId(person.getUserId());
             watchedMovieDO.setWatchedMovie(tempWatchMovie);
